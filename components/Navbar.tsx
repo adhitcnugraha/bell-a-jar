@@ -10,9 +10,9 @@ const Navbar = () => {
           <Image src="/images/logo.svg" alt="logo" width={40} height={40} />
         </div>
       </Link>
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-6">
         <NavItems />
-        <p>Sign In</p>
+        <p>Login</p>
       </div>
     </nav>
   );
