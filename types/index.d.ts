@@ -17,7 +17,7 @@ enum Subject {
   bisnis = "bisnis",
 }
 
-type Companion = Models.DocumentList<Models.Document> & {
+type Assistant = Models.DocumentList<Models.Document> & {
   $id: string;
   name: string;
   subject: Subject;
@@ -26,7 +26,7 @@ type Companion = Models.DocumentList<Models.Document> & {
   bookmarked: boolean;
 };
 
-interface CreateCompanion {
+interface CreateAssistant {
   name: string;
   subject: string;
   topic: string;
@@ -35,7 +35,7 @@ interface CreateCompanion {
   duration: number;
 }
 
-interface GetAllCompanions {
+interface GetAllAssistants {
   limit?: number;
   page?: number;
   subject?: string | string[];
@@ -71,7 +71,7 @@ interface SavedMessage {
   content: string;
 }
 
-interface CompanionComponentProps {
+interface AssistantComponentProps {
   companionId: string;
   subject: string;
   topic: string;

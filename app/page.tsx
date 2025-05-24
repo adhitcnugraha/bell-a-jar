@@ -1,11 +1,49 @@
-import { Button } from "@/components/ui/button";
+import AssistantCard from "@/components/AssistantCard";
+import CallToAction from "@/components/CallToAction";
+import AssistantsList from "@/components/ui/AssistantsList";
+import { recentSessions } from "@/constants";
 
 const Page = () => {
   return (
-    <div>
-      <h1 className="text-2xl underline">Welcome to Bell-A-Jar</h1>
-      <Button>Get Started</Button>
-    </div>
+    <main>
+      <h1>Popular Assistants</h1>
+      {/* home section class */}
+      <section className="flex gap-4 justify-between items-start w-full max-lg:flex-col-reverse max-lg:items-center">
+        <AssistantCard
+          id="123"
+          name="Neura the Brainy Explorer"
+          topic="Neural Network of the Brain"
+          subject="ipa"
+          duration={45}
+          color="#ffda6e"
+        />
+        <AssistantCard
+          id="456"
+          name="Countsy the Number Wizard"
+          topic="Derivatives & Integrals"
+          subject="matematika"
+          duration={30}
+          color="#ca262e"
+        />
+        <AssistantCard
+          id="789"
+          name="Verba the Vocabulary Explorer"
+          topic="English Literature"
+          subject="english"
+          duration={30}
+          color="#71c2d8"
+        />
+      </section>
+      {/* home section class */}
+      <section className="flex gap-4 justify-between items-start w-full max-lg:flex-col-reverse max-lg:items-center">
+        <AssistantsList
+          title="Recently completed sessions"
+          assistants={recentSessions}
+          classNames="w-2/3 max-lg:w-full"
+        />
+        <CallToAction />
+      </section>
+    </main>
   );
 };
 

@@ -21,10 +21,11 @@ export const voices = {
   female: { casual: "ZIlrSGI4jZqobxRKprJz", formal: "sarah" },
 };
 
+// dummy data
 export const recentSessions = [
   {
     id: "1",
-    subject: "science",
+    subject: "ipa",
     name: "Neura the Brainy Explorer",
     topic: "Neural Network of the Brain",
     duration: 45,
@@ -32,7 +33,7 @@ export const recentSessions = [
   },
   {
     id: "2",
-    subject: "maths",
+    subject: "matematika",
     name: "Countsy the Number Wizard",
     topic: "Derivatives & Integrals",
     duration: 30,
@@ -40,7 +41,7 @@ export const recentSessions = [
   },
   {
     id: "3",
-    subject: "language",
+    subject: "english",
     name: "Verba the Vocabulary Builder",
     topic: "English Literature",
     duration: 30,
@@ -56,7 +57,7 @@ export const recentSessions = [
   },
   {
     id: "5",
-    subject: "history",
+    subject: "sejarah",
     name: "Memo, the Memory Keeper",
     topic: "World Wars: Causes & Consequences",
     duration: 15,
@@ -64,7 +65,7 @@ export const recentSessions = [
   },
   {
     id: "6",
-    subject: "economics",
+    subject: "ekonomi",
     name: "The Market Maestro",
     topic: "The Basics of Supply & Demand",
     duration: 10,
