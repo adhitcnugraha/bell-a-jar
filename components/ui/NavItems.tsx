@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Assistants", href: "/assistants" },
+  { label: "Library", href: "/assistants" },
   { label: "Journey", href: "/my-journey" },
 ];
 
@@ -14,7 +14,7 @@ const NavItems = () => {
   const pathname = usePathname();
   return (
     // Immediate return mapping
-    <nav className="flex items-center gap-6">
+    <nav className="flex items-center gap-8">
       {navItems.map(({ label, href }) => (
         <Link
           href={href}
