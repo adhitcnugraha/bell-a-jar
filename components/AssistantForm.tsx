@@ -22,6 +22,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { subjects } from "@/constants";
 import { Textarea } from "./ui/textarea";
+import { createAssistant } from "@/lib/actions/assistant.actions";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Assistant is required." }),
@@ -45,8 +47,15 @@ const AssistantForm = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // pass into server action
+    const assistant = await createAssistant(values);
+    if (assistant) {
+      redirect(`/assistants/${assistant.id}`);
+    } else {
+      console.log("Failed to create an assistant");
+      redirect("/");
+    }
   };
   return (
     <Form {...form}>
