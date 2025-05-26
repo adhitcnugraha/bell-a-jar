@@ -9,8 +9,8 @@ export const subjects = [
 
 export const subjectsColors = {
   ipa: "#E5D0FF",
-  matematika: "#FFDA6E",
-  english: "#BDE7FF",
+  matematika: "#CA262E",
+  english: "#71C2D8",
   coding: "#FFC8E4",
   sejarah: "#FFECC8",
   ekonomi: "#C8FFDF",

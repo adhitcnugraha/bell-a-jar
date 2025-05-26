@@ -23,7 +23,7 @@ const Page = () => {
           topic="Derivatives & Integrals"
           subject="matematika"
           duration={30}
-          color="#ca262e"
+          color="#CA262E"
         />
         <AssistantCard
           id="789"
@@ -31,7 +31,7 @@ const Page = () => {
           topic="English Literature"
           subject="english"
           duration={30}
-          color="#71c2d8"
+          color="#71C2D8"
         />
       </section>
       {/* home section class */}
