@@ -82,13 +82,14 @@ const AssistantsList = ({
                 <TableCell className="min-w-[120px]">
                   <div className="flex items-center gap-2 w-full justify-end">
                     <p className="text-xl max-md:text-lg whitespace-nowrap">
-                      {duration}
+                      {duration} <span className="max-md:hidden">minutes</span>
                     </p>
                     <Image
                       src="/icons/clock.svg"
                       alt="minutes"
                       width={14}
                       height={14}
+                      className="md:hidden"
                     />
                   </div>
                 </TableCell>

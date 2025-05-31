@@ -55,3 +55,43 @@ export const getAssistant = async (id: string) => {
     if (error) return console.log(error)
     return data[0]
 }
+
+export const addToSessionHistory = async (assistantId: string) => {
+    const {userId} = await auth()
+    const supabase = createSupabaseClient()
+    const {data, error} = await supabase
+    .from('session_history')
+    .insert({assistant_id: assistantId, user_id: userId})
+
+    if (error) throw new Error(error.message)
+    return data
+}
+
+export const getRecentSessions = async (limit: 5) => {
+    const supabase = createSupabaseClient()
+    
+    // search assistants with specific id and return everything
+    const {data, error} = await supabase.from('session_history')
+    .select(`assistants:assistant_id (*)`)
+    .order('created_at', {ascending: false})
+    .limit(limit)
+
+    if (error) {
+    console.error('Error fetching recent sessions:', error.message);
+    return []; // Return empty array instead of Error object
+  }
+    return data.map(({assistants}) => assistants)
+}
+
+export const getUserSessions = async (userId: string, limit: 5) => {
+    const supabase = createSupabaseClient()
+    
+    // search assistants with specific id and return everything
+    const {data, error} = await supabase.from('session_history')
+    .select(`assistants:assistant_id (*)`)
+    .eq('user_id', userId)
+    .limit(limit)
+
+    if (error) return new Error(error.message)
+    return data.map(({assistants}) => assistants)
+}

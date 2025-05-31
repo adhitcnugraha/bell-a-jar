@@ -6,6 +6,7 @@ import Error from "next/error";
 import Image from "next/image";
 import soundwaves from "@/constants/soundwaves.json";
 import React, { useEffect, useRef, useState } from "react";
+import { addToSessionHistory } from "@/lib/actions/assistant.actions";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -42,7 +43,11 @@ const AssistantComponent = ({
 
   useEffect(() => {
     const onCallStart = () => setCallStatus(CallStatus.ACTIVE);
-    const onCallEnd = () => setCallStatus(CallStatus.FINISHED);
+    const onCallEnd = () => {
+      setCallStatus(CallStatus.FINISHED);
+
+      addToSessionHistory(assistantId);
+    };
 
     const onMessage = (message: Message) => {
       if (message.type === "transcript" && message.transcriptType === "final") {
