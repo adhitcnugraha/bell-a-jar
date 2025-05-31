@@ -67,7 +67,7 @@ export const addToSessionHistory = async (assistantId: string) => {
     return data
 }
 
-export const getRecentSessions = async (limit: 5) => {
+export const getRecentSessions = async (limit: 10) => {
     const supabase = createSupabaseClient()
     
     // search assistants with specific id and return everything
@@ -83,7 +83,7 @@ export const getRecentSessions = async (limit: 5) => {
     return data.map(({assistants}) => assistants)
 }
 
-export const getUserSessions = async (userId: string, limit: 5) => {
+export const getUserSessions = async (userId: string, limit: 10) => {
     const supabase = createSupabaseClient()
     
     // search assistants with specific id and return everything
