@@ -17,7 +17,7 @@ export const createAssistant = async (formData: CreateAssistant) => {
     return data[0]
 }
 
-// fetch & pagination
+// fetching all assistants & pagination
 export const getAllAssistants = async ({limit = 10, page = 1, subject, topic}: GetAllAssistants) => {
      // import supabase.ts func
     const supabase = createSupabaseClient()
@@ -41,4 +41,17 @@ export const getAllAssistants = async ({limit = 10, page = 1, subject, topic}: G
     if (error) throw new Error(error.message)
     // return the value
     return assistants;
+}
+
+// fetching one assistant
+export const getAssistant = async (id: string) => {
+    const supabase = createSupabaseClient()
+
+    const {data, error} = await supabase
+    .from('assistants')
+    .select()
+    .eq('id', id)
+
+    if (error) return console.log(error)
+    return data[0]
 }
