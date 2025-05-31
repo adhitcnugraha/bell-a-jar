@@ -43,12 +43,14 @@ const AssistantComponent = ({
   useEffect(() => {
     const onCallStart = () => setCallStatus(CallStatus.ACTIVE);
     const onCallEnd = () => setCallStatus(CallStatus.FINISHED);
+
     const onMessage = (message: Message) => {
       if (message.type === "transcript" && message.transcriptType === "final") {
         const newMessage = { role: message.role, content: message.transcript };
         setMessages((prev) => [newMessage, ...prev]);
       }
     };
+
     const onSpeechStart = () => setIsSpeaking(true);
     const onSpeechEnd = () => setIsSpeaking(false);
     const onError = (error: Error) => console.log("error", error);
@@ -182,19 +184,21 @@ const AssistantComponent = ({
         </div>
       </section>
       <section className="transcript">
-        <div className="transcript-message">
+        <div className="transcript-message no-scrollbar">
           {messages.map((message) => {
             if (message.role === "assistant") {
               return (
                 <p key={message.content} className="max-sm:text-sm">
-                  {name.split(" "[0].replace("/[.,]/g, ", " "))}:{" "}
+                  {name.split(" ")[0].replace(/[.,]/g, "")}
                   {message.content}
                 </p>
               );
             } else {
-              <p key={message.content} className="text-black max-sm:text-sm">
-                {userName} : {message.content}
-              </p>;
+              return (
+                <p key={message.content} className="text-black max-sm:text-sm">
+                  {userName} : {message.content}
+                </p>
+              );
             }
           })}
         </div>
