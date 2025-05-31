@@ -1,19 +1,19 @@
 export const subjects = [
-  "matematika",
+  "math",
   "english",
-  "ipa",
-  "sejarah",
+  "science",
+  "history",
   "coding",
-  "ekonomi",
+  "economy",
 ];
 
 export const subjectsColors = {
-  ipa: "#E5D0FF",
-  matematika: "#CA262E",
+  science: "#E5D0FF",
+  math: "#CA262E",
   english: "#71C2D8",
   coding: "#FFC8E4",
-  sejarah: "#FFECC8",
-  ekonomi: "#C8FFDF",
+  history: "#FFECC8",
+  economy: "#C8FFDF",
 };
 
 export const voices = {
@@ -25,7 +25,7 @@ export const voices = {
 export const recentSessions = [
   {
     id: "1",
-    subject: "ipa",
+    subject: "science",
     name: "Neura the Brainy Explorer",
     topic: "Neural Network of the Brain",
     duration: 45,
@@ -33,7 +33,7 @@ export const recentSessions = [
   },
   {
     id: "2",
-    subject: "matematika",
+    subject: "math",
     name: "Countsy the Number Wizard",
     topic: "Derivatives & Integrals",
     duration: 30,
@@ -57,7 +57,7 @@ export const recentSessions = [
   },
   {
     id: "5",
-    subject: "sejarah",
+    subject: "history",
     name: "Memo, the Memory Keeper",
     topic: "World Wars: Causes & Consequences",
     duration: 15,
@@ -65,7 +65,7 @@ export const recentSessions = [
   },
   {
     id: "6",
-    subject: "ekonomi",
+    subject: "economy",
     name: "The Market Maestro",
     topic: "The Basics of Supply & Demand",
     duration: 10,

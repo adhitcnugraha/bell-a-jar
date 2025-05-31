@@ -23,7 +23,7 @@ const AssistantSession = async ({ params }: AssistantSessionPageProps) => {
   return (
     <main>
       <article className="flex rounded-border justify-between p-6 max-md:flex-col">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <div
             className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"
             style={{ backgroundColor: getSubjectColor(subject) }}
@@ -37,7 +37,7 @@ const AssistantSession = async ({ params }: AssistantSessionPageProps) => {
           </div>
           {/* small devices */}
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
               <p className="font-bold text-2xl">{name}</p>
               <div className="bg-black text-white rounded-3xl text-sm px-2 py-1 capitalize max-md:hidden">
                 {subject}

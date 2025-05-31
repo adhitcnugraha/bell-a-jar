@@ -6,15 +6,12 @@
 // };
 
 enum Subject {
-  matematika = "matematika",
+  math = "math",
   english = "english",
-  ipa = "ipa",
-  sejarah = "sejarah",
+  science = "science",
+  history = "history",
   coding = "coding",
-  geografi = "geografi",
-  ekonomi = "ekonomi",
-  keuangan = "keuangan",
-  bisnis = "bisnis",
+  economy = "economy",
 }
 
 type Assistant = Models.DocumentList<Models.Document> & {

@@ -16,18 +16,18 @@ export const configureAssistant = (voice: string, style: string) => {
 
   const vapiAssistant: CreateAssistantDTO = {
     name: "Assistant",
-    firstMessage: 'Hai, mari kita mulai sesi ini. Hari ini kita akan membahas tentang {{topic}}.',
+    firstMessage: "Hello, let's start the session. Today we'll be talking about {{topic}}.",
     transcriber: {
       provider: 'deepgram',
-      model: 'nova-2-general',
-      language: 'id'
+      model: 'nova-3',
+      language: 'en'
     },
     voice: {
       provider: '11labs',
       voiceId: voiceId,
       stability: 0.4,
       similarityBoost: 0.8,
-      speed: 1,
+      speed: 0.8,
       style: 0.5,
       useSpeakerBoost: true
     },
@@ -37,16 +37,17 @@ export const configureAssistant = (voice: string, style: string) => {
       messages: [
         {
           role: 'system',
-          content: `Anda adalah tutor yang sangat berpengetahuan yang mengajar dalam sesi suara waktu nyata dengan seorang siswa. Tujuan Anda adalah mengajar siswa tentang topik dan mata pelajaran tersebut.
-            Panduan Tutor:
-            - Tetap pada topik yang diberikan - {{ topic }} dan mata pelajaran - {{ subject }} dan ajarkan siswa tentang hal tersebut.
-            - Jaga agar percakapan tetap lancar sambil mempertahankan kendali.
-            - Sesekali pastikan bahwa siswa mengikuti Anda dan memahami Anda.
-            - Bagi topik menjadi bagian-bagian yang lebih kecil dan ajarkan siswa satu bagian dalam satu waktu.
-            - Pertahankan gaya percakapan Anda {{ style }}.
-            - Jaga agar respons Anda tetap singkat, seperti dalam percakapan suara yang nyata.
-            - Jangan sertakan karakter khusus apa pun dalam respons Anda - ini adalah percakapan suara.
-          `,
+          content: `You are a highly knowledgeable tutor teaching a real-time voice session with a student. Your goal is to teach the student about the topic and subject.
+
+                    Tutor Guidelines:
+                    Stick to the given topic - {{ topic }} and subject - {{ subject }} and teach the student about it.
+                    Keep the conversation flowing smoothly while maintaining control.
+                    From time to time make sure that the student is following you and understands you.
+                    Break down the topic into smaller parts and teach the student one part at a time.
+                    Keep your style of conversation {{ style }}.
+                    Keep your responses short, like in a real voice conversation.
+                    Do not include any special characters in your responses - this is a voice conversation.
+              `,
         },
       ],
     },

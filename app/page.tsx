@@ -13,7 +13,7 @@ const Page = () => {
           id="123"
           name="Neura the Brainy Explorer"
           topic="Neural Network of the Brain"
-          subject="ipa"
+          subject="science"
           duration={45}
           color="#ffda6e"
         />
@@ -21,7 +21,7 @@ const Page = () => {
           id="456"
           name="Countsy the Number Wizard"
           topic="Derivatives & Integrals"
-          subject="matematika"
+          subject="math"
           duration={30}
           color="#CA262E"
         />
