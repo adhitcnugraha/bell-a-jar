@@ -1,3 +1,4 @@
+import AssistantComponent from "@/components/AssistantComponent";
 import { getAssistant } from "@/lib/actions/assistant.actions";
 import { getSubjectColor } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs/server";
@@ -10,8 +11,10 @@ interface AssistantSessionPageProps {
 
 const AssistantSession = async ({ params }: AssistantSessionPageProps) => {
   const { id } = await params;
-  const { name, subject, topic, duration } = await getAssistant(id);
-  const user = await currentUser;
+  const assistant = await getAssistant(id);
+  const user = await currentUser();
+
+  const { name, subject, topic, duration } = assistant;
 
   if (!user) redirect("/sign-in");
   if (!name) redirect("/assistants");
@@ -44,9 +47,15 @@ const AssistantSession = async ({ params }: AssistantSessionPageProps) => {
           </div>
         </div>
         <div className="items-start text-2xl max-md:hidden">
-          {duration.minutes}
+          {duration} minutes
         </div>
       </article>
+      <AssistantComponent
+        {...assistant}
+        assistantId={id}
+        userName={user.firstName!}
+        userImage={user.imageUrl!}
+      />
     </main>
   );
 };
