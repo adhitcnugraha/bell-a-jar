@@ -95,3 +95,15 @@ export const getUserSessions = async (userId: string, limit: 10) => {
     if (error) return new Error(error.message)
     return data.map(({assistants}) => assistants)
 }
+
+export const getUserAssistant = async (userId: string) => {
+    const supabase = createSupabaseClient()
+    
+    // search assistants with specific id and return everything
+    const {data, error} = await supabase.from('assistants')
+    .select()
+    .eq('author', userId)
+
+    if (error) return new Error(error.message)
+    return data
+}
