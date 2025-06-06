@@ -123,7 +123,7 @@ export const newAssistantPermissions = async () => {
     const {userId, has} = await auth()
     const supabase = createSupabaseClient()
 
-    let limit = 0
+    let limit = 3
 
     if (has({plan: 'gold'})) {
         return true
