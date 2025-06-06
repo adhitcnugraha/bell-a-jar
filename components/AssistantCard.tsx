@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { removeBookmark, addBookmark } from "@/lib/actions/assistant.actions";
+import { usePathname } from "next/navigation";
+import { useState, useTransition, useEffect } from "react";
 
 // passing the card props with interface
 interface AssistantCardProps {
@@ -9,6 +14,7 @@ interface AssistantCardProps {
   subject: string;
   duration: number;
   color: string;
+  bookmarked: boolean;
 }
 
 const AssistantCard = ({
@@ -18,7 +24,29 @@ const AssistantCard = ({
   subject,
   duration,
   color,
+  bookmarked: initialBookmarked,
 }: AssistantCardProps) => {
+  const pathname = usePathname();
+  const [bookmarked, setBookmarked] = useState(initialBookmarked);
+  const [isPending, startTransition] = useTransition();
+  const [checkingStatus, setCheckingStatus] = useState(false);
+
+  const handleBookmark = async () => {
+    startTransition(async () => {
+      try {
+        if (bookmarked) {
+          await removeBookmark(id, pathname);
+          setBookmarked(false);
+        } else {
+          await addBookmark(id, pathname);
+          setBookmarked(true);
+        }
+      } catch (error) {
+        console.error("Error Bookmark:", error);
+        setBookmarked(!bookmarked);
+      }
+    });
+  };
   return (
     // assistant card className
     <article
@@ -31,9 +59,17 @@ const AssistantCard = ({
           {subject}
         </div>
         {/* button bookmark className */}
-        <button className="px-2 bg-black rounded-3xl flex items-center h-full aspect-square cursor-pointer">
+        <button
+          className={`px-2 bg-black rounded-3xl flex items-center h-full aspect-square cursor-pointer ${
+            isPending || checkingStatus ? "opacity-50" : " "
+          }`}
+          onClick={handleBookmark}
+          disabled={isPending || checkingStatus}
+        >
           <Image
-            src="/icons/bookmark.svg"
+            src={
+              bookmarked ? "/icons/bookmark-filled.svg" : "/icons/bookmark.svg"
+            }
             alt="bookmark"
             width={12.5}
             height={15}

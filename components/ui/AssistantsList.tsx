@@ -51,7 +51,7 @@ const AssistantsList = ({
                     {/* mobile design */}
                     <div className="flex items-center gap-2">
                       <div
-                        className="size-[72px] flex items-center justify-center rounded-lg max-md:size-[50px]"
+                        className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"
                         style={{ backgroundColor: getSubjectColor(subject) }}
                       >
                         {/* passing different icons for each one of the subjects */}
@@ -60,7 +60,7 @@ const AssistantsList = ({
                           alt={subject}
                           width={35}
                           height={35}
-                          className="max-md:w-[25px] max-md:h-[25px]"
+                          className="max-md:hidden"
                         />
                       </div>
                       <div className="flex flex-col gap-1">

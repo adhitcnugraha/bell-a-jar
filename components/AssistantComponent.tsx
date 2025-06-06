@@ -190,17 +190,17 @@ const AssistantComponent = ({
       </section>
       <section className="transcript">
         <div className="transcript-message no-scrollbar">
-          {messages.map((message) => {
+          {messages.map((message, index) => {
             if (message.role === "assistant") {
               return (
-                <p key={message.content} className="max-sm:text-sm">
-                  {name.split(" ")[0].replace(/[.,]/g, "")}
+                <p key={index} className="max-sm:text-sm">
+                  {name.split(" ")[0].replace("/[.,]/g, ", "")} :
                   {message.content}
                 </p>
               );
             } else {
               return (
-                <p key={message.content} className="text-black max-sm:text-sm">
+                <p key={index} className="text-black max-sm:text-sm">
                   {userName} : {message.content}
                 </p>
               );
